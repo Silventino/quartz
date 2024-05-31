@@ -146,3 +146,23 @@ li:has(> .folder-outer:not(.open)) > .folder-container > svg {
   // remove default margin from li
   margin: 0;
 }
+
+.explorer-list {
+  max-height: calc(100vh - 200px);
+  overflow-y: auto;
+
+  &::-webkit-scrollbar {
+    width: 8px;
+  }
+
+  &:hover {
+    &::-webkit-scrollbar-track {
+      background: #f6f6f6;
+    }
+
+    &::-webkit-scrollbar-thumb {
+      background: #dcdcdc;
+      border-radius: 100px;
+    }
+  }
+}

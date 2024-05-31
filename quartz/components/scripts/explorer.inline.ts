@@ -35,9 +35,11 @@ function toggleFolder(evt: MouseEvent) {
       ? target.parentElement?.nextSibling
       : target.parentElement?.parentElement?.nextElementSibling
   ) as MaybeHTMLElement
+
   const currentFolderParent = (
     isSvg ? target.nextElementSibling : target.parentElement
   ) as MaybeHTMLElement
+
   if (!(childFolderContainer && currentFolderParent)) return
 
   childFolderContainer.classList.toggle("open")

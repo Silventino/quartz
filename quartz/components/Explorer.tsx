@@ -17,21 +17,25 @@ const defaultOptions = {
     return node
   },
   sortFn: (a, b) => {
-    // Sort order: folders first, then files. Sort folders and files alphabetically
-    if ((!a.file && !b.file) || (a.file && b.file)) {
-      // numeric: true: Whether numeric collation should be used, such that "1" < "2" < "10"
-      // sensitivity: "base": Only strings that differ in base letters compare as unequal. Examples: a ≠ b, a = á, a = A
-      return a.displayName.localeCompare(b.displayName, undefined, {
-        numeric: true,
-        sensitivity: "base",
-      })
-    }
+    // // Sort order: folders first, then files. Sort folders and files alphabetically
+    // if ((!a.file && !b.file) || (a.file && b.file)) {
+    //   // numeric: true: Whether numeric collation should be used, such that "1" < "2" < "10"
+    //   // sensitivity: "base": Only strings that differ in base letters compare as unequal. Examples: a ≠ b, a = á, a = A
+    //   return a.displayName.localeCompare(b.displayName, undefined, {
+    //     numeric: true,
+    //     sensitivity: "base",
+    //   })
+    // }
+    // if (a.file && !b.file) {
+    //   return 1
+    // } else {
+    //   return -1
+    // }
 
-    if (a.file && !b.file) {
-      return 1
-    } else {
-      return -1
-    }
+    return a.displayName.localeCompare(b.displayName, undefined, {
+      numeric: true,
+      sensitivity: "base",
+    })
   },
   filterFn: (node) => node.name !== "tags",
   order: ["filter", "map", "sort"],
@@ -109,7 +113,7 @@ export default ((userOpts?: Partial<Options>) => {
           </svg>
         </button>
         <div id="explorer-content">
-          <ul class="overflow" id="explorer-ul">
+          <ul class="explorer-list" id="explorer-ul">
             <ExplorerNode node={fileTree} opts={opts} fileData={fileData} />
             <li id="explorer-end" />
           </ul>
